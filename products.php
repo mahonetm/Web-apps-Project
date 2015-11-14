@@ -12,8 +12,12 @@ and open the template in the editor.
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
+			<li class ="navLink">
+                <a href = "user_login.php">LOGIN</a>
+			<li class ="navLink">
+                <a href = "register_user.php">CREATE USER</a>
             <li class ="navLink">
-                <a href = "contact.php">CONTACT</a>
+                <a href = "add_customer.php">CONTACT</a>
             </li>
             <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
@@ -30,7 +34,7 @@ and open the template in the editor.
     <body>
         <p>These are our products</p>
         <?php
-          require_once 'login.php';
+ require_once 'login.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) {
     die($conn->connect_error);
@@ -64,7 +68,7 @@ if (isset($_POST['customer_id']) &&
 	
 	echo <<<_END
 	<form action="customer_form.php" method="post"><pre>
-    <input type="hidden" name="order_id">
+order_id <input type="text" name="order_id">
 customer_id <input type="text" name="customer_id">
 product_id <input type="text" name="product_id">
 quantity <input type="text" name="quantity">
@@ -107,7 +111,7 @@ _END;
 	{
 		return $conn->real_escape_string($_POST[$var]);
 	}
-        ?> put your code here
+        
         ?>
     </body>
 </html>
