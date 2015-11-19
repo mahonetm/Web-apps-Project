@@ -12,9 +12,25 @@ and open the template in the editor.
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
-			<li class ="navLink">
+            <li class ="navLink">
+                <?php
+                session_start();    
+                 if(isset($_SESSION['username']) &&
+                   isset ($_SESSION['password'])){
+                     echo <<<_END
+                    <li class ="navLink">
+                <a href = "user_logout.php">LOGOUT</a>
+                    <li class ="navLink">
+_END;
+                }else{
+                    echo <<<_END
+                    <li class ="navLink">
                 <a href = "user_login.php">LOGIN</a>
-			<li class ="navLink">
+                    <li class ="navLink">
+_END;
+                }
+
+                ?>
                 <a href = "register_user.php">CREATE ACCOUNT</a>
             <li class ="navLink">
                 <a href = "add_customer.php">CONTACT</a>
