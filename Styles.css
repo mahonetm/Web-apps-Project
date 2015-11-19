@@ -32,10 +32,11 @@ and open the template in the editor.
 }
 .navLink{
     display: block;
-    width: 140px;
+    width: 160px;
     float: right;
     font-family: monospace, cursive;
     font-size: 20px;
+    text-align: center;
    
 }
 a:link, a:visited, a:active{

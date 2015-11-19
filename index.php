@@ -12,9 +12,9 @@ and open the template in the editor.
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
-			<li class ="navLink">
+            <li class ="navLink">
                 <a href = "user_login.php">LOGIN</a>
-			<li class ="navLink">
+            <li class ="navLink">
                 <a href = "register_user.php">CREATE ACCOUNT</a>
             <li class ="navLink">
                 <a href = "add_customer.php">CONTACT</a>
