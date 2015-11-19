@@ -14,12 +14,22 @@ and open the template in the editor.
         <ul id = "menu">
             <li class ="navLink">
                 <?php
-                require_once 'session_check.php';
-                if(isset($_SESSION['username']) &&
+                session_start();    
+                 if(isset($_SESSION['username']) &&
                    isset ($_SESSION['password'])){
-                echo "hello";
-                //<a href = "user_login.php">LOGIN</a>
+                     echo <<<_END
+                    <li class ="navLink">
+                <a href = "user_logout.php">LOGOUT</a>
+                    <li class ="navLink">
+_END;
+                }else{
+                    echo <<<_END
+                    <li class ="navLink">
+                <a href = "user_login.php">LOGIN</a>
+                    <li class ="navLink">
+_END;
                 }
+
                 ?>
             <li class ="navLink">
                 <a href = "register_user.php">CREATE ACCOUNT</a>
