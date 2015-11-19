@@ -62,15 +62,20 @@ if (isset($_POST['customer_id']) &&
 	isset($_POST['customer_password']) &&
 	isset($_POST['username']))
 {
+    
+        $salt1 = "qm&h*";
+        $salt2 = "pg!@";
+        
 	$customer_id = get_post($conn, 'customer_id');
 	$customer_fname = get_post($conn, 'customer_fname');
 	$customer_lname = get_post($conn, 'customer_lname');
 	$customer_email = get_post($conn, 'customer_email');
 	$customer_phone = get_post($conn, 'customer_phone');
 	$customer_password = get_post($conn, 'customer_password');
+        $customer_token = hash('ripemd128', "$salt1$customer_password$salt2");
 	$username = get_post($conn, 'username');
-	$query = "INSERT INTO customer (customer_id, customer_fname, customer_lname, customer_email, customer_phone, customer_password, username) VALUES" . 
-		"('$customer_id', '$customer_fname', '$customer_lname', '$customer_email', '$customer_phone', '$customer_password', '$username')";
+	$query = "INSERT INTO customer (customer_id, customer_fname, customer_lname, customer_email, customer_phone, customer_token, username) VALUES" . 
+		"('$customer_id', '$customer_fname', '$customer_lname', '$customer_email', '$customer_phone', '$customer_token', '$username')";
 	$result = $conn->query($query);
 	if (!$result) echo "INSERT failed: $query<br>" . 
 		$conn->error . "<br><br>";
