@@ -45,15 +45,6 @@ require_once 'login.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
-if(isset($_POST['delete']) && isset($_POST['customer_id'])) {
-	
-	$customer_phone = get_post($conn, 'product_id');
-	$query = "DELETE FROM customer WHERE customer_id='$customer_id'";
-	$result = $conn->query($query);
-	if (!$result) echo "DELETE failed: $query<br>" .
-		$conn->error . "<br><br>";
-}
-
 if (isset($_POST['customer_id']) &&
 	isset($_POST['customer_fname']) &&
 	isset($_POST['customer_lname']) &&
