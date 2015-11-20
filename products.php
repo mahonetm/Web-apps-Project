@@ -55,78 +55,41 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) {
     die($conn->connect_error);
 }
-
-if (isset($_POST['delete']) && isset($_POST['order_id']))
-{
-	$order_id = get_post($conn, 'order_id');
-	$query = "DELETE FROM order WHERE order_id= '$order_id'";
-	$result = $conn->query($query);
-	if (!$result) {
-        echo "DELETE failed: $query<br>" . $conn->error . "<br><br>";
-    }
-}
-
-if (isset($_POST['customer_id']) &&
-	isset($_POST['product_id']) &&
-	isset($_POST['quantity']) &&
-	isset($_POST['order_id']))
-	{
-		$customer_id = get_post($conn, 'customer_id');
-		$product_id = get_post($conn, 'product_id');
-		$quantity = get_post($conn, 'quantity');
-		$order_id = get_post($conn, 'order_id');
-		$query = "INSERT INTO order VALUES" . "('$customer_id', '$product_id', '$quantity', '$order_id')";
-		$result = $conn->query($query);
-		if (!$result) {
-        echo "INSERT failed: $query<br>" . $conn->error . "<br><br>";
-    }
-}
+        $query="SELECT * FROM product";
+        $result=$conn->query($query);
+        if (!$result) {
+       die($conn->error);
+        }
+        $rows=$result->num_rows;
+        for($j=0; $j<$rows; $j++) { 
+	$result->data_seek($j);
+	$row=$result->fetch_array(MYSQLI_NUM);
 	
-	echo <<<_END
-	<form action="customer_form.php" method="post"><pre>
-order_id <input type="text" name="order_id">
-customer_id <input type="text" name="customer_id">
-product_id <input type="text" name="product_id">
-quantity <input type="text" name="quantity">
-	<input type="submit" value="Order Now">
-	</pre></form>
         
-_END;
+   
+   
+	echo <<<_END
 	
-	$query = "SELECT * FROM order";
-	$result = $conn->query($query);
-	if (!$result) {
-    die("Database access failed: " . $conn->error);
-}
-
-$rows = $result->num_rows;
-	
-	for ($j = 0 ; $j < $rows ; ++$j)
-	{
-		$result->data_seek($j);
-		$row = $result->fetch_array(MYSQLI_NUM);
-		
-		echo <<<_END
-		<pre>
-order_id $row[0]
-customer_id $row[1]
-product_id $row[2]
-quantity $row[3]
-</pre>
-<form action="customer_form.php" method="post">
-<input type="hidden" name="delete" value="yes">
-<input type="hidden" name="order_id" value="$row[0]">
-<input type="submit" value="DELETE RECORD"></form>
+         <table id ="table" class ="details_table">
+            <tr>
+                <td><img src ="$row[1].jpg" class = "infoimg"/>
+                </td>
+                <td>
+                    <h2>$row[1]</h2>
+                    <p>$row[3]</p>
+                    <p>Available material:    $row[4]</p>
+                </td>  
+            </tr>
+            <tr>
+                <td><a href="update-movie.php#$row[1]"><button id="addButton">Update Movie</button></a></td>
+            </tr><br><br>
 _END;
-	}
+        }
+        
 	
 	$result->close();
 	$conn->close();
 	
-	function get_post($conn, $var)
-	{
-		return $conn->real_escape_string($_POST[$var]);
-	}
         
         ?>
     </body>
