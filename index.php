@@ -9,6 +9,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="Styles.css">
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
+    </head>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
@@ -67,12 +68,12 @@ _END;
         <table>
             <tr>
                 <td><img src ="bedside.jpg" class = "table"/></td>
-                <td><img src ="clock.jpg"class = "table"/></td>
+                <td><img src ="tree trunk clock.jpg"class = "table"/></td>
                 <td><img src ="kitchen.jpg"class = "table"/></td>
             </tr>
             <tr>
                 <td><img src ="mirror.jpg" class ="table"/></td>
-                <td><img src ="musicbox.jpg" class = "table"/></td>
+                <td><img src ="music box.jpg" class = "table"/></td>
                 <td><img src = "pen.jpg" class="table"/></td>
             </tr>
                 

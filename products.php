@@ -9,6 +9,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="Styles.css">
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
+    </head>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
@@ -48,7 +49,7 @@ _END;
     
     </head>
     <body>
-        <p>These are our products</p>
+        <h1>Explore my 100% hand made with customer in mind products</h1>
         <?php
  require_once 'login.php';
 $conn = new mysqli($hn, $un, $pw, $db);
@@ -77,7 +78,7 @@ if ($conn->connect_error) {
                 <td>
                     <h2>$row[1]</h2>
                     <p>$row[3]</p>
-                    <p>Available material:    $row[4]</p>
+                    <p>Available in:    $row[4]</p>
                 </td>  
             </tr>
             <tr>

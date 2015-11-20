@@ -9,6 +9,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="Styles.css">
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
+    </head>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">

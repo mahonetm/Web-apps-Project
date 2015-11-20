@@ -8,6 +8,7 @@ and open the template in the editor.
     <head>
         <link rel="stylesheet" type="text/css" href="Styles.css">
         <meta charset="UTF-8">
+    </head>
         <title>BM Custom Woodwork - Home</title>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>

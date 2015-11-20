@@ -173,3 +173,9 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
     opacity: .5;
     color: black;
 }
+#trees{
+    margin: auto;
+    width: 100%;
+    z-index: -1;
+    position: absolute;
+}

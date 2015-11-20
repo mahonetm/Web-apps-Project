@@ -1,8 +1,10 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="Styles.css">
+        <link rel="stylesheet" type="text/css" href="LoginStyles.css">
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
+    </head>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
@@ -42,12 +44,8 @@ _END;
     
     </head>
     <body>
-        <div class="GenDiv" id="conWelcome">
-            <h3 id="contactHead">Create User Account!</h3>
-            <p id='contactContent'>
-                Create a user account to help track your orders,<br>
-                and to have access to upcoming features on the site!<br>
-            </p>
+        <div>
+            <img src ="trees.jpg" id ="trees"/>
         </div>
 
 <?php
@@ -58,15 +56,15 @@ $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
 echo <<<_END
-<html>
-	<body>
-		<form action='user_login.php' method='post'>
-			Username: <input type='text' name='username'><br><br>
-			Password: <input type='password' name='password'><br><br>
+
+		<form action='user_login.php' method='post' class="login">
+			Username: <input type='text' name='username' placeholder ='username'><br><br>
+			Password: <input type='password' name='password' placeholder ='password'><br><br>
 			<input type='submit' value='Login'>
 		</form>
-	</body>
-</html>
+               
+                
+	
 
 
 _END;
