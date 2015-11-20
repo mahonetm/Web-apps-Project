@@ -58,8 +58,8 @@ if ($conn->connect_error) die($conn->connect_error);
 echo <<<_END
 
 		<form action='user_login.php' method='post' class="login">
-			Username: <input type='text' name='username' placeholder ='username'><br><br>
-			Password: <input type='password' name='password' placeholder ='password'><br><br>
+			<input type='text' name='username' placeholder ='username'><br><br>
+			<input type='password' name='password' placeholder ='password'><br><br>
 			<input type='submit' value='Login'>
 		</form>
                
