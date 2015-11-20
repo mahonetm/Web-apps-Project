@@ -85,10 +85,3 @@ and open the template in the editor.
 	outline: none;
 }
 
-::-webkit-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
-
-::-moz-input-placeholder{
-   color: rgba(255,255,255,0.6);
-}
