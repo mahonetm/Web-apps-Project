@@ -49,7 +49,9 @@ _END;
     
     </head>
     <body>
-        <h1>Explore my 100% hand made with customer in mind products</h1>
+        <h1>Explore my 100% hand made products<br>
+            Always made with the customer in mind
+        </h1>
         <?php
  require_once 'login.php';
 $conn = new mysqli($hn, $un, $pw, $db);
