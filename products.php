@@ -76,14 +76,14 @@ if ($conn->connect_error) {
                 <td><img src ="$row[1].jpg" class = "infoimg"/>
                 </td>
                 <td>
-                    <h2>$row[1]</h2>
+                    <h2><a href= "Order_form.php">$row[1]</a></h2>
                     <p>$row[3]</p>
                     <p>Available in:    $row[4]</p>
                 </td>  
             </tr>
-            <tr>
-                <td><a href="update-movie.php#$row[1]"><button id="addButton">Update Movie</button></a></td>
-            </tr><br><br>
+            <br><br>
+                
+            
 _END;
         }
         
