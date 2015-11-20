@@ -142,6 +142,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
     color: white;
     font-size: 30px;
     text-shadow: 4px 4px black;
+    
 }
 .button{
     background-color: lightblue;
@@ -153,4 +154,22 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
 }
 .button:hover{
     background-color: gray;
+}
+#addButton{
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  padding: 8px;
+  color: white;
+  border: 1px solid #fff;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  border-radius: 5px;
+  background: none;
+}
+#addButton:hover{
+    background-color: white;
+    opacity: .5;
+    color: black;
 }
