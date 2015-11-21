@@ -67,12 +67,12 @@ _END;
         <div/>
         <table>
             <tr>
-                <td><img src ="bedside.jpg" class = "table"/></td>
+                <td><img src ="bedside table.jpg" class = "table"/></td>
                 <td><img src ="tree trunk clock.jpg"class = "table"/></td>
                 <td><img src ="kitchen.jpg"class = "table"/></td>
             </tr>
             <tr>
-                <td><img src ="mirror.jpg" class ="table"/></td>
+                <td><img src ="mirror (frame only).jpg" class ="table"/></td>
                 <td><img src ="music box.jpg" class = "table"/></td>
                 <td><img src = "pen.jpg" class="table"/></td>
             </tr>
