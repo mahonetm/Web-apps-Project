@@ -7,6 +7,8 @@ and open the template in the editor.
     Created on : Oct 5, 2015, 11:47:17 AM
     Author     : Owner
 */
+@import url(http://fonts.googleapis.com/css?family=Exo:100,200,400);
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 #header{
     width: 100%;
     height: 100px;
@@ -132,7 +134,7 @@ td{
     text-shadow: 2px 2px white;
 }
 #formDiv{
-    background-color: #331400;
+    background-color: black;
 background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.png);
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
@@ -160,6 +162,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
   width: 200px;
   height: 50px;
   padding: 8px;
+  margin-left: 5%;
   color: white;
   border: 1px solid #fff;
   text-align: center;
@@ -178,4 +181,28 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
     width: 100%;
     z-index: -1;
     position: absolute;
+}
+#addForm{
+    margin-left: 25%;
+    padding-top: 5%;
+    color: white;
+    font-size: 15pt;
+    
+}
+
+#addForm input[type=text]{
+        width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+}
+#addForm input[type=text]:focus{
+        outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
 }

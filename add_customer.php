@@ -7,6 +7,7 @@ and open the template in the editor.
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="Styles.css">
+        <link rel="stylesheet" type="text/css" href="LoginStyles.css">
         <meta charset="UTF-8">
     </head>
         <title>BM Custom Woodwork - Home</title>
@@ -86,12 +87,12 @@ if (isset($_POST['customer_id']) &&
 
 echo <<<_END
 <div class="GenDiv" id="formDiv">
-<form action="add_customer.php" method="post" id ="form"><pre>
-	      <input type="hidden" name="customer_id"><br>
-	     First Name:<input type="text" name="customer_fname"><br>
-              Last Name:<input type="text" name="customer_lname"><br>
-	  Email Address:<input type="text" name="customer_email"><br>
-	   Phone Number:<input type="text" name="customer_phone"><br>
+<form action="add_customer.php" method="post" id ="addForm"><pre>
+	     <input type="hidden" name="customer_id"><br>
+	     <input type="text" name="customer_fname" placeholder ="First Name"><br>
+             <input type="text" name="customer_lname"  placeholder ="Last Name"><br>
+	     <input type="text" name="customer_email" placeholder="Email Address"><br>
+	     <input type="text" name="customer_phone" placeholder ="Phone Number"><br>
 	   <input type ="submit" id = "addButton" value="ADD RECORD">
 </pre></form>
 </div>
