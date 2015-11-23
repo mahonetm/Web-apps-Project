@@ -86,14 +86,14 @@ if (isset($_POST['customer_id']) &&
 	}
 
 echo <<<_END
-<div class="GenDiv" id="formDiv">
-<form action="add_customer.php" method="post" id ="addForm"><pre>
+<div class="formDiv">
+<form action="add_customer.php" method="post" class ="addForm"><pre>
 	     <input type="hidden" name="customer_id"><br>
 	     <input type="text" name="customer_fname" placeholder ="First Name"><br>
              <input type="text" name="customer_lname"  placeholder ="Last Name"><br>
 	     <input type="text" name="customer_email" placeholder="Email Address"><br>
 	     <input type="text" name="customer_phone" placeholder ="Phone Number"><br>
-	   <input type ="submit" id = "addButton" value="ADD RECORD">
+	   <input type ="submit" class = "addButton" value="SEND">
 </pre></form>
 </div>
 _END;

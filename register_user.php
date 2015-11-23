@@ -90,16 +90,19 @@ if (isset($_POST['customer_id']) &&
 	}
 
 echo <<<_END
-<form action="register_user.php" method="post"><pre>
-	      <input type="hidden" name="customer_id"><br>
-	     First Name:<input type="text" name="customer_fname"><br>
-              Last Name:<input type="text" name="customer_lname"><br>
-	  Email Address:<input type="text" name="customer_email"><br>
-	   Phone Number:<input type="text" name="customer_phone"><br>
-	   Set Password:<input type="password" name="customer_password"><br>
-	   Set Username:<input type="text" name="username"><br>
-			     <input type ="submit" value="ADD RECORD">
-</pre></form>
+    <div class ="formDiv"> 
+    <p id ="regParagraph">Please provide the following information to create an account</p>
+    <form action="register_user.php" method="post" class ="addForm"><pre>
+	     <input type="hidden" name="customer_id"><br>
+	     <input type="text" name="customer_fname" placeholder ="First Name"><br>
+             <input type="text" name="customer_lname" placeholder ="Last Name"><br>
+             <input type="text" name="customer_email" placeholder ="E-mail Address"><br>
+	     <input type="text" name="customer_phone" placeholder ="Phone Number"<br>
+	     <input type="password" name="customer_password" placeholder ="Create Password"><br>
+	     <input type="text" name="username"placeholder ="Create Username"><br>
+                <input type ="submit" class ="addButton" id="registerAdd" value="ADD RECORD">
+    </pre></form>
+    </div>
 _END;
 
 

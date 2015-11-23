@@ -133,9 +133,10 @@ td{
     margin-top: -20px;
     text-shadow: 2px 2px white;
 }
-#formDiv{
-    background-color: black;
-background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.png);
+.formDiv{
+margin-top: -15pt;
+background-color: black;
+background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png);
 /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
 #form{
@@ -157,7 +158,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
 .button:hover{
     background-color: gray;
 }
-#addButton{
+.addButton{
   display: inline-block;
   width: 200px;
   height: 50px;
@@ -171,7 +172,7 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
   border-radius: 5px;
   background: none;
 }
-#addButton:hover{
+.addButton:hover{
     background-color: white;
     opacity: .5;
     color: black;
@@ -182,15 +183,15 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
     z-index: -1;
     position: absolute;
 }
-#addForm{
+.addForm{
     margin-left: 25%;
-    padding-top: 5%;
+    padding-bottom: 5%;
     color: white;
     font-size: 15pt;
     
 }
 
-#addForm input[type=text]{
+.addForm input[type=text]{
         width: 250px;
 	height: 30px;
 	background: transparent;
@@ -202,7 +203,34 @@ background-image: url(http://www.transparenttextures.com/patterns/wood-pattern.p
 	font-weight: 400;
 	padding: 4px;
 }
-#addForm input[type=text]:focus{
+.addForm input[type=text]:focus{
         outline: none;
 	border: 1px solid rgba(255,255,255,0.9);
+}
+.addForm input[type=password]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+.addForm[type=password]:focus{
+	outline: none;
+	border: 1px solid rgba(255,255,255,0.9);
+}
+#registerAdd{
+    margin-left: -5px;
+}
+#regParagraph{
+    margin-top: 15px;
+    color: white;
+    font-family: cursive;
+    font-size: 25pt;
+    text-align: center;
 }
