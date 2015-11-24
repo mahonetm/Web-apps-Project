@@ -98,9 +98,10 @@ echo <<<_END
              <input type="text" name="customer_lname" placeholder ="Last Name"><br>
              <input type="text" name="customer_email" placeholder ="E-mail Address"><br>
 	     <input type="text" name="customer_phone" placeholder ="Phone Number"<br>
+        
+             <input type="text" name="username"placeholder ="Create Username"><br>
 	     <input type="password" name="customer_password" placeholder ="Create Password"><br>
-	     <input type="text" name="username"placeholder ="Create Username"><br>
-                <input type ="submit" class ="addButton" id="registerAdd" value="ADD RECORD">
+                <input type ="submit" class ="addButton" id="registerAdd" value="Sign Up">
     </pre></form>
     </div>
 _END;
