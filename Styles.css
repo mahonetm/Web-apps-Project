@@ -234,3 +234,26 @@ background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png)
     font-size: 25pt;
     text-align: center;
 }
+#contactNLI{
+    margin-top: -35px;
+    color: white;
+    height: 500px;
+    width: auto;
+}
+#pNLI{
+    text-align: center;
+    padding-top: 10%;
+    font-family: cursive;
+    font-size: 25pt;
+    
+}
+#aNLI{
+    color:grey;
+}
+#aNLI:link, aNLI:visited, aNLI:active{ 
+     text-decoration: none;
+     color: white;
+}
+#aNLI:hover{
+    color: darkgray;
+}

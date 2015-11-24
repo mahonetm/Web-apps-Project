@@ -10,11 +10,32 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
     </head>
-    <div id = "header">
+     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
         <ul id = "menu">
             <li class ="navLink">
-                <a href = "contact.php">CONTACT</a>
+                <?php
+                session_start();    
+                 if(isset($_SESSION['username']) &&
+                   isset ($_SESSION['password'])){
+                     echo <<<_END
+                    <li class ="navLink">
+                <a href = "user_logout.php">LOGOUT</a>
+                    <li class ="navLink">
+_END;
+                }else{
+                    echo <<<_END
+                    <li class ="navLink">
+                <a href = "user_login.php">LOGIN</a>
+                    <li class ="navLink">
+_END;
+                }
+
+                ?>
+            <li class ="navLink">
+                <a href = "register_user.php">CREATE ACCOUNT</a>
+            <li class ="navLink">
+                <a href = "add_customer.php">CONTACT</a>
             </li>
             <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
@@ -69,7 +90,8 @@ if (isset($_POST['customer_id']) &&
 	if (!$result) echo "INSERT failed: $query<br>" . 
 		$conn->error . "<br><br>";
 	}
-
+    if(isset($_SESSION['username']) &&
+    isset($_SESSION['password'])){                 
 echo <<<_END
 <div class="GenDiv" id="formDiv"><form action="contact.php" method="post" id ="form"><pre>
 	      <input type="hidden" name="customer_id"><br>
@@ -82,7 +104,15 @@ echo <<<_END
     </form>
 </div>
 _END;
+     }else{
+       echo <<<_END
+         <div class="GenDiv" id="formDiv">
+         <p>Please Login here to get in touch</p>
+         </div>
+_END;
+         
 
+         }
 
 $conn->close();
 

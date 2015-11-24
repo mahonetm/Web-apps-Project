@@ -84,7 +84,8 @@ if (isset($_POST['customer_id']) &&
 	if (!$result) echo "INSERT failed: $query<br>" . 
 		$conn->error . "<br><br>";
 	}
-
+if(isset($_SESSION['username']) &&
+   isset($_SESSION['password'])){
 echo <<<_END
 <div class="formDiv">
 <form action="add_customer.php" method="post" class ="addForm"><pre>
@@ -97,7 +98,13 @@ echo <<<_END
 </pre></form>
 </div>
 _END;
-
+   }else{
+       echo <<<_END
+       <div class="formDiv" id="contactNLI">
+       <p id="pNLI">Please login <a href ="user_login.php" id="aNLI">here</a> to get in touch with me</p>
+       </div>
+_END;
+   }
 
 $conn->close();
 

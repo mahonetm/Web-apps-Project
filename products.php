@@ -32,7 +32,7 @@ _END;
                 }
 
                 ?>
-                <a href = "register_user.php">CREATE USER</a>
+                <a href = "register_user.php">CREATE ACCOUNT</a>
             <li class ="navLink">
                 <a href = "add_customer.php">CONTACT</a>
             </li>
