@@ -62,7 +62,7 @@ echo <<<_END
 			<input type='password' name='password' placeholder ='password'><br><br>
 			<input type='submit' value='Login'>
 		</form>
-                <p style ="color: white;">No account? click <a href ="register_user.php">here</a> to sign up</p>
+                <p style ="color: white; text-align: center;">No account? click <a href ="register_user.php">here</a> to sign up</p>
                 
 	
 
