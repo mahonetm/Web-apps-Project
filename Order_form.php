@@ -51,7 +51,8 @@ _END;
     </head>
     <body>
         <?php
-         require_once 'login.php';
+        require_once 'login.php';
+        $id = get_post()
         $conn = new mysqli($hn, $un, $pw, $db);
         if ($conn->connect_error) die($conn->connect_error);
         
@@ -67,8 +68,9 @@ _END;
 	$order_id = get_post($conn, 'order_id');
 	$customer_id = get_post($conn, 'customer_id');
 	$product_id = get_post($conn, 'product_id');
-        $product_name = get_post($conn, 'product_name');
 	$quantity = get_post($conn, 'quantity');
+        
+        $query1 = "SELECT * FROM products WHERE 'product_id'= id ";
 	
 	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
 		"('$order_id', '$customer_id', '$product_id', '$quantity')";
@@ -87,12 +89,17 @@ echo <<<_END
              <input type="text" name="product_name"  placeholder ="Product Name"><br>
 	     <input type="text" name="material_type" placeholder="Wood Type"><br>
              <input type="text" name="price" placeholder ="Price"><br>
-	     <select name="Quantity"><br><br>
+	     <select name="Quantity">
 				<option value="5">5</option>
 				<option value="10">10</option>
 				<option value="15">15</option>
 	   <input type ="submit" class = "addButton" value="PLACE ORDER">
 </pre></form>
+</div>
+<div class="formDiv">
+<form action="custom_order.php" method="post" class="addForm"><pre>
+        <input type="submit" class = "addButton" value="NEED A CUSTOM ORDER?">
+</form>
 </div>
 _END;
    /*}else{
