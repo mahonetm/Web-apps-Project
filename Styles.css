@@ -257,3 +257,7 @@ background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png)
 #aNLI:hover{
     color: darkgray;
 }
+.emailBody{
+    margin-top: 10%;
+    margin-left: 35%;
+}
