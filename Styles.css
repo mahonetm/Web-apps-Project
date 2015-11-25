@@ -261,3 +261,6 @@ background-image: url(http://www.transparenttextures.com/patterns/dark-wood.png)
     margin-top: 10%;
     margin-left: 35%;
 }
+.infoimg{
+    max-width: 450px;
+}
