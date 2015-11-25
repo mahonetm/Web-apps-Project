@@ -36,9 +36,7 @@ _END;
             <li class ="navLink">
                 <a href = "add_customer.php">CONTACT</a>
             </li>
-            <li class ="navLink">
-                <a href = "Order_form.php">CUSTOM ORDER</a>
-            </li>
+            
             <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
             </li>
@@ -71,11 +69,14 @@ if ($conn->connect_error) {
 	$result->data_seek($j);
 	$row=$result->fetch_array(MYSQLI_NUM);
         
+        
+         if(isset($_SESSION['username']) &&
+            isset ($_SESSION['password'])){
 	echo <<<_END
 	
          <table id ="table" class ="details_table">
             <tr>
-                <td><img src ="$row[1].jpg" class = "infoimg"/>
+                <td width ="455"><img src ="$row[1].jpg" class = "infoimg"/>
                 </td>
                 <td>
                     <h2><a href= "Order_form.php?id=$row[0]">$row[1]</a></h2>
@@ -87,6 +88,26 @@ if ($conn->connect_error) {
                 
             
 _END;
+            }else{
+                echo <<<_END
+	
+         <table id ="table" class ="details_table">
+            <tr>
+                <td width ="455"><img src ="$row[1].jpg" class = "infoimg"/>
+                </td>
+                <td>
+                    <h2><a href= "user_login.php">$row[1]</a></h2>
+                    <p>$row[3]</p>
+                    <p>Available in:    $row[4]</p>
+                </td>  
+            </tr>
+            <br><br>
+                
+            
+_END;
+            }
+                
+                
         }
         
 	
