@@ -75,7 +75,7 @@ if ($conn->connect_error) {
 	
          <table id ="table" class ="details_table">
             <tr>
-                <td><img src ="$row[1].jpg" class = "infoimg"/>
+                <td width ="455"><img src ="$row[1].jpg" class = "infoimg"/>
                 </td>
                 <td>
                     <h2><a href= "Order_form.php?id=$row[0]">$row[1]</a></h2>
