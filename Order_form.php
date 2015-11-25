@@ -52,7 +52,7 @@ _END;
     <body>
         <?php
         require_once 'login.php';
-        $id = get_post()
+        $id = get_post();
         $conn = new mysqli($hn, $un, $pw, $db);
         if ($conn->connect_error) die($conn->connect_error);
         
