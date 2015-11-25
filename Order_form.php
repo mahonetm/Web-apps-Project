@@ -53,43 +53,31 @@ _END;
     <body>
         <?php
         require_once 'login.php';
-        
         $conn = new mysqli($hn, $un, $pw, $db);
         if ($conn->connect_error) die($conn->connect_error);
         
-        if (isset($_POST['order_id']) &&
-	isset($_POST['customer_id']) &&
-	isset($_POST['product_id']) &&
-        isset($_POST['product_name']) &&
-        isset($_POST['product_type']) &&
-        isset($_POST['price']) &&
-        isset($_POST['material_name']) &&
-	isset($_POST['quantity']))
-{
-	$order_id = get_post($conn, 'order_id');
-	$customer_id = get_post($conn, 'customer_id');
-	$product_id = get_post($conn, 'product_id');
-	$quantity = get_post($conn, 'quantity');
+        if (isset($_GET['id'])) {
+            $product_id = $_GET['id'];
+            $query = "SELECT * FROM product WHERE product_id=$product_id";
+             $result=$conn->query($query);
+        if (!$result) {
+       die($conn->error);
+        }
+        $rows=$result->num_rows;
         
-        $query1 = "SELECT * FROM products WHERE 'product_id'= id ";
-	
-	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
-		"('$order_id', '$customer_id', '$product_id', '$quantity')";
-	$result = $conn->query($query);
-	if (!$result) echo "INSERT failed: $query<br>" . 
-		$conn->error . "<br><br>";
-	}
-/*if(isset($_SESSION['username']) &&
-   isset($_SESSION['password'])){*/
-echo <<<_END
+        for($j=0; $j<$rows; $j++) { 
+	$result->data_seek($j);
+	$row=$result->fetch_array(MYSQLI_NUM);
+             echo <<<_END
 <div class="formDiv">
 <form action="add_customer.php" method="post" class ="addForm"><pre>
              <input type="hidden" name="order_id"><br>
 	     <input type="hidden" name="customer_id"><br>
-	     <input type="hidden" name="product_id"><br>
-             <input type="text" name="product_name"  placeholder ="Product Name"><br>
-	     <input type="text" name="material_type" placeholder="Wood Type"><br>
-             <input type="text" name="price" placeholder ="Price"><br>
+	     <input type="hidden" name="product_id" value="$row[0]"><br>
+             <input type="text" name="product_name" placeholder ="Product Name" value="$row[1]"><br>
+	     Available Materials: $row[4] <br>
+             <input type="text" name="material_type" placeholder="Wood Type"><br>
+             <input type="text" name="price" value="$row[3]" placeholder ="Price"><br>
 	     <select name="Quantity">
 				<option value="5">5</option>
 				<option value="10">10</option>
@@ -103,6 +91,33 @@ echo <<<_END
 </form>
 </div>
 _END;
+        }
+        }
+        
+       /* if (isset($_POST['order_id']) &&
+	isset($_POST['customer_id']) &&
+	isset($_POST['product_id']) &&
+        isset($_POST['product_name']) &&
+        isset($_POST['product_type']) &&
+        isset($_POST['price']) &&
+        isset($_POST['material_name']) &&
+	isset($_POST['quantity']))
+{
+	$order_id = get_post($conn, 'order_id');
+	$customer_id = get_post($conn, 'customer_id');
+	$product_id = get_post($conn, 'product_id');
+	$quantity = get_post($conn, 'quantity');
+       
+	
+	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
+		"('$order_id', '$customer_id', '$product_id', '$quantity')";
+	$result = $conn->query($query);
+	if (!$result) echo "INSERT failed: $query<br>" . 
+		$conn->error . "<br><br>";
+	}*/
+/*if(isset($_SESSION['username']) &&
+   isset($_SESSION['password'])){*/
+
    /*}else{
        echo <<<_END
        <div class="formDiv" id="contactNLI">
@@ -112,13 +127,12 @@ _END;
    }*/
 
 $conn->close();
-
 function get_post($conn, $var) {
 	return $conn->real_escape_string($_POST[$var]);
 }
         
 ?>    
-    </body>
+    
         
     </body>
 </html>
