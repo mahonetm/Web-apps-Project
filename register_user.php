@@ -37,6 +37,9 @@ _END;
                 <a href = "add_customer.php">CONTACT</a>
             </li>
             <li class ="navLink">
+                <a href = "Order_form.php">CUSTOM ORDER</a>
+            </li>
+            <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
             </li>
             <li class ="navLink">
@@ -59,6 +62,7 @@ _END;
 <?php
 
 require_once 'login.php';
+include_once 'sanitize.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
@@ -70,23 +74,26 @@ if (isset($_POST['customer_id']) &&
 	isset($_POST['customer_password']) &&
 	isset($_POST['username']))
 {
-    
         $salt1 = "qm&h*";
         $salt2 = "pg!@";
         
-	$customer_id = get_post($conn, 'customer_id');
-	$customer_fname = get_post($conn, 'customer_fname');
-	$customer_lname = get_post($conn, 'customer_lname');
-	$customer_email = get_post($conn, 'customer_email');
-	$customer_phone = get_post($conn, 'customer_phone');
-	$customer_password = get_post($conn, 'customer_password');
+	$customer_id = mysql_entities_fix_string($conn, $_POST['customer_id']);
+	$customer_fname = mysql_entities_fix_string($conn, $_POST['customer_fname']);
+	$customer_lname = mysql_entities_fix_string($conn, $_POST['customer_lname']);
+	$customer_email = mysql_entities_fix_string($conn, $_POST['customer_email']);
+	$customer_phone = mysql_entities_fix_string($conn, $_POST['customer_phone']);
+	$customer_password = mysql_entities_fix_string($conn, $_POST['customer_password']);
+        $username = mysql_entities_fix_string($conn, $_POST['username']);
         $customer_token = hash('ripemd128', "$salt1$customer_password$salt2");
-	$username = get_post($conn, 'username');
+	
 	$query = "INSERT INTO customer (customer_id, customer_fname, customer_lname, customer_email, customer_phone, customer_token, username) VALUES" . 
 		"('$customer_id', '$customer_fname', '$customer_lname', '$customer_email', '$customer_phone', '$customer_token', '$username')";
 	$result = $conn->query($query);
 	if (!$result) echo "INSERT failed: $query<br>" . 
 		$conn->error . "<br><br>";
+        else{
+            header("Location: user_login.php");    
+        }
 	}
 
 echo <<<_END
@@ -110,7 +117,19 @@ _END;
 $conn->close();
 //hello all
 
+//sanitization code
+
+function mysql_entities_fix_string($conn, $string){
+	return htmlentities(mysql_fix_string($conn, $string));
+}
+
+function mysql_fix_string($conn, $string){
+	if(get_magic_quotes_gpc()) $string = stripslashes($string);
+	return $conn->real_escape_string($string);
+}
+
+/*
 function get_post($conn, $var) {
 	return $conn->real_escape_string($_POST[$var]);
-}
+}*/
 ?>
