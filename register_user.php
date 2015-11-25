@@ -37,6 +37,9 @@ _END;
                 <a href = "add_customer.php">CONTACT</a>
             </li>
             <li class ="navLink">
+                <a href = "order.php">CUSTOM ORDER</a>
+            </li>
+            <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
             </li>
             <li class ="navLink">
@@ -87,6 +90,9 @@ if (isset($_POST['customer_id']) &&
 	$result = $conn->query($query);
 	if (!$result) echo "INSERT failed: $query<br>" . 
 		$conn->error . "<br><br>";
+        else{
+            header("Location: user_login.php");    
+        }
 	}
 
 echo <<<_END

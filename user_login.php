@@ -32,6 +32,9 @@ _END;
                 <a href = "add_customer.php">CONTACT</a>
             </li>
             <li class ="navLink">
+                <a href = "order.php">CUSTOM ORDER</a>
+            </li>
+            <li class ="navLink">
                 <a href = "products.php">PRODUCTS</a>
             </li>
             <li class ="navLink">
