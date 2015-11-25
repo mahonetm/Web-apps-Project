@@ -9,6 +9,7 @@ and open the template in the editor.
         <link rel="stylesheet" type="text/css" href="Styles.css">
         <meta charset="UTF-8">
         <title>BM Custom Woodwork - Home</title>
+        <script type="text/javascript" src="validate_usercreation.js"></script>
     </head>
     <div id = "header">
         <img src ="drawing.png" id = "logo"/>
@@ -99,7 +100,7 @@ if (isset($_POST['customer_id']) &&
 echo <<<_END
     <div class ="formDiv"> 
     <p id ="regParagraph">Please provide the following information to create an account</p>
-    <form action="register_user.php" method="post" class ="addForm"><pre>
+    <form action="register_user.php" method="post" class ="addForm" onsubmit="return validate_usercreation(this)"><pre>
 	     <input type="hidden" name="customer_id"><br>
 	     <input type="text" name="customer_fname" placeholder ="First Name"><br>
              <input type="text" name="customer_lname" placeholder ="Last Name"><br>
