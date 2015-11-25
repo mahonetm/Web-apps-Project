@@ -66,34 +66,12 @@ require_once 'login.php';
 $conn = new mysqli($hn, $un, $pw, $db);
 if ($conn->connect_error) die($conn->connect_error);
 
-if (isset($_POST['customer_id']) &&
-	isset($_POST['customer_fname']) &&
-	isset($_POST['customer_lname']) &&
-	isset($_POST['customer_email']) &&
-	isset($_POST['customer_phone']))
-{
-	$customer_id = get_post($conn, 'customer_id');
-	$customer_fname = get_post($conn, 'customer_fname');
-	$customer_lname = get_post($conn, 'customer_lname');
-	$customer_email = get_post($conn, 'customer_email');
-	$customer_phone = get_post($conn, 'customer_phone');
-	
-	$query = "INSERT INTO customer (customer_id, customer_fname, customer_lname, customer_email, customer_phone) VALUES" . 
-		"('$customer_id', '$customer_fname', '$customer_lname', '$customer_email', '$customer_phone')";
-	$result = $conn->query($query);
-	if (!$result) echo "INSERT failed: $query<br>" . 
-		$conn->error . "<br><br>";
-	}
 if(isset($_SESSION['username']) &&
    isset($_SESSION['password'])){
 echo <<<_END
 <div class="formDiv">
-<form action="add_customer.php" method="post" class ="addForm"><pre>
-	     <input type="hidden" name="customer_id"><br>
-	     <input type="text" name="customer_fname" placeholder ="First Name"><br>
-             <input type="text" name="customer_lname"  placeholder ="Last Name"><br>
-	     <input type="text" name="customer_email" placeholder="Email Address"><br>
-	     <input type="text" name="customer_phone" placeholder ="Phone Number"><br>
+<textarea name ="emailBody" form ="email" class ="emailBody">Your message...</textarea>
+<form action="form-to-email.php" method="post" class ="addForm" id="email"><pre>
 	   <input type ="submit" class = "addButton" value="SEND">
 </pre></form>
 </div>
