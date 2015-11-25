@@ -76,11 +76,11 @@ _END;
              <input type="hidden" name="order_id"><br>
 	     <input type="hidden" name="customer_id"><br>
 	     <input type="hidden" name="product_id" value="$row[0]"><br>
-             <input type="text" name="product_name" placeholder ="Product Name" value="$row[1]"><br>
+             Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>
-             <input type="text" name="material_type" placeholder="Wood Type"><br>
-             <input type="text" name="price" value="$row[3]" placeholder ="Price"><br>
-	     <select name="Quantity">
+             <input type="text" name="material_type" placeholder="Please type desired material"><br>
+             Price: $$row[3]<br>
+	     Quantity: <select name="Quantity">
 				<option value="5">5</option>
 				<option value="10">10</option>
 				<option value="15">15</option>
@@ -88,13 +88,13 @@ _END;
 </pre></form>
 </div>
 <div class="formDiv">
-<form action="custom_order.php" method="post" class="addForm"><pre>
+<form action="add_customer.php" method="post" class="addForm"><pre>
         <input type="submit" class = "addButton" value="NEED A CUSTOM ORDER?">
 </form>
 </div>
 _END;
         }
-        }
+}
         
        /* if (isset($_POST['order_id']) &&
 	isset($_POST['customer_id']) &&
