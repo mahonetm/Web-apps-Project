@@ -54,6 +54,7 @@ _END;
         <?php
         require_once 'login.php';
         $conn = new mysqli($hn, $un, $pw, $db);
+        $resultuser = 0;
         if ($conn->connect_error) die($conn->connect_error);
         
         if (isset($_GET['id'])) {
@@ -65,6 +66,28 @@ _END;
         }
         $rows=$result->num_rows;
         
+            if (isset($_SESSION['username'])) {
+            $username1 = $_SESSION['username'];
+            }
+         
+    if (isset($_POST['order_id']) &&
+	isset($_POST['customer_id']) &&
+	isset($_POST['product_id']) &&
+	isset($_POST['quantity']))
+{
+	$order_id = mysql_entities_fix_string($conn, $_POST['order_id']);
+	$customer_id = mysql_entities_fix_string($conn, $_POST['order_id']);
+	$product_id = mysql_entities_fix_string($conn, $_POST['order_id']);
+	$quantity = mysql_entities_fix_string($conn, $_POST['order_id']);
+       
+	
+	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
+		"('$order_id', '$customer_id', '$product_id', '$quantity')";
+	$result = $conn->query($query);
+	if (!$result) echo "INSERT failed: $query<br>" . 
+		$conn->error . "<br><br>";
+	}    
+        
         for($j=0; $j<$rows; $j++) { 
 	$result->data_seek($j);
 	$row=$result->fetch_array(MYSQLI_NUM);
@@ -72,16 +95,23 @@ _END;
 <div class="formDiv">
 <form action="add_customer.php" method="post" class ="addForm"><pre>
              <input type="hidden" name="order_id"><br>
-	     <input type="hidden" name="customer_id"><br>
+	     <input type="hidden" name="customer_id" value=$username1><br>
 	     <input type="hidden" name="product_id" value="$row[0]"><br>
              Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>
              <input type="text" name="material_type" placeholder="Please type desired material"><br>
              Price: $$row[3]<br>
-	     Quantity: <select name="Quantity">
-				<option value="5">5</option>
-				<option value="10">10</option>
-				<option value="15">15</option>
+	     Quantity: <select name="quantity">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
 	   <input type ="submit" class = "addButton" value="PLACE ORDER">
 </pre></form>
 </div>
@@ -94,43 +124,18 @@ _END;
         }
 }
         
-       /* if (isset($_POST['order_id']) &&
-	isset($_POST['customer_id']) &&
-	isset($_POST['product_id']) &&
-        isset($_POST['product_name']) &&
-        isset($_POST['product_type']) &&
-        isset($_POST['price']) &&
-        isset($_POST['material_name']) &&
-	isset($_POST['quantity']))
-{
-	$order_id = get_post($conn, 'order_id');
-	$customer_id = get_post($conn, 'customer_id');
-	$product_id = get_post($conn, 'product_id');
-	$quantity = get_post($conn, 'quantity');
-       
-	
-	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
-		"('$order_id', '$customer_id', '$product_id', '$quantity')";
-	$result = $conn->query($query);
-	if (!$result) echo "INSERT failed: $query<br>" . 
-		$conn->error . "<br><br>";
-	}*/
-/*if(isset($_SESSION['username']) &&
-   isset($_SESSION['password'])){*/
-
-   /*}else{
-       echo <<<_END
-       <div class="formDiv" id="contactNLI">
-       <p id="pNLI">Please login <a href ="user_login.php" id="aNLI">here</a> first to place an order</p>
-       </div>
-_END;
-   }*/
+     
 
 $conn->close();
 function get_post($conn, $var) {
 	return $conn->real_escape_string($_POST[$var]);
 }
-        
+
+function mysql_entities_fix_string($conn, $string){
+return htmlentities(mysql_fix_string($conn, $string));
+
+}
+
 ?>    
     
         
