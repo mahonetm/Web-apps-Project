@@ -71,7 +71,7 @@ if(isset($_SESSION['username']) &&
    isset($_SESSION['password'])){
 echo <<<_END
 <div class="formDiv">
-<textarea name ="emailBody" form ="email" class ="emailBody">Your message...</textarea>
+<textarea name ="emailBody" form ="email" class ="emailBody" rows ="9" cols="50">Your message...</textarea>
 <form action="form-to-email.php" method="post" class ="addForm" id="email"><pre>
 	   <input type ="submit" class = "addButton" value="SEND">
 </pre></form>
