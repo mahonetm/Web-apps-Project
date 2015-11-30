@@ -58,6 +58,11 @@ _END;
         $resultuser = 0;
         if ($conn->connect_error) die($conn->connect_error);
         
+        if (isset($_SESSION['username'])&& isset($_SESSION['customer_id'])) {
+            $username1 = $_SESSION['username'];
+            $cust_id = $_SESSION['customer_id'];
+            }
+        
         if (isset($_GET['id'])) {
             $product_id = $_GET['id'];
             $query = "SELECT * FROM product WHERE product_id=$product_id";
@@ -66,30 +71,6 @@ _END;
        die($conn->error);
         }
         $rows=$result->num_rows;
-        
-            if (isset($_SESSION['username'])&&
-                isset($_SESSION['customer_id'])) {
-            $username1 = $_SESSION['username'];
-            $cust_id = $_SESSION['customer_id'];
-            }
-         
-    if (isset($_POST['order_id']) &&
-	isset($_POST['customer_id']) &&
-	isset($_POST['product_id']) &&
-	isset($_POST['quantity']))
-{
-	$order_id = mysql_entities_fix_string($conn, $_POST['order_id']);
-	$customer_id = mysql_entities_fix_string($conn, $_POST['customer_id']);
-	$product_id = mysql_entities_fix_string($conn, $_POST['product_id']);
-	$quantity = mysql_entities_fix_string($conn, $_POST['quantity']);
-       
-	
-	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
-		"('$order_id', '$customer_id', '$product_id', '$quantity')";
-	$result = $conn->query($query);
-	if (!$result) echo "INSERT failed: $query<br>" . 
-		$conn->error . "<br><br>";
-	}    
         
         for($j=0; $j<$rows; $j++) { 
 	$result->data_seek($j);
@@ -102,7 +83,7 @@ _END;
 	     <input type="text" name="product_id" value="$row[0]"><br>
              Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>
-             <input type="text" name="material_type" placeholder="Please type desired material"><br>
+             <input type="text" name="material" placeholder="Please type desired material"><br>
              Price: $$row[3]<br>
 	     Quantity: <select name="quantity">
 				<option value="1">1</option>
@@ -124,9 +105,30 @@ _END;
 </form>
 </div>
 _END;
+             
+
         }
 }
-        
+
+ if (isset($_POST['order_id']) &&
+	isset($_POST['customer_id']) &&
+	isset($_POST['product_id']) &&
+	isset($_POST['material']) &&
+        isset($_POST['quantity']))
+     {
+	$order_id = mysql_entities_fix_string($conn, $_POST['order_id']);
+	$customer_id = mysql_entities_fix_string($conn, $_POST['customer_id']);
+	$product_id = mysql_entities_fix_string($conn, $_POST['product_id']);
+        $material= mysql_entities_fix_string($conn, $_POST['material']);
+	$quantity = mysql_entities_fix_string($conn, $_POST['quantity']);
+       
+	
+	$query = "INSERT INTO order (order_id, customer_id, product_id, material, quantity) VALUES" . 
+		"('$order_id', '$customer_id', '$product_id', '$material, '$quantity')";
+	$result = $conn->query($query);
+	if (!$result) echo "INSERT failed: $query<br>" . 
+		$conn->error . "<br><br>";
+	}    
      
 
 $conn->close();
