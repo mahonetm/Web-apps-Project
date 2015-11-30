@@ -53,6 +53,7 @@ _END;
     <body>
         <?php
         require_once 'login.php';
+        include_once 'sanitize.php';
         $conn = new mysqli($hn, $un, $pw, $db);
         $resultuser = 0;
         if ($conn->connect_error) die($conn->connect_error);
@@ -78,9 +79,9 @@ _END;
 	isset($_POST['quantity']))
 {
 	$order_id = mysql_entities_fix_string($conn, $_POST['order_id']);
-	$customer_id = mysql_entities_fix_string($conn, $_POST['order_id']);
-	$product_id = mysql_entities_fix_string($conn, $_POST['order_id']);
-	$quantity = mysql_entities_fix_string($conn, $_POST['order_id']);
+	$customer_id = mysql_entities_fix_string($conn, $_POST['customer_id']);
+	$product_id = mysql_entities_fix_string($conn, $_POST['product_id']);
+	$quantity = mysql_entities_fix_string($conn, $_POST['quantity']);
        
 	
 	$query = "INSERT INTO order (order_id, customer_id, product_id, quantity) VALUES" . 
