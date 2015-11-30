@@ -31,7 +31,7 @@ if (
                 $conn->error . "<br><br>";
         }else{
             echo "Your order was placed successfully. I'll be in touch with you personally to work out the details." . "<br>";
-            echo "Check out more pruducts <a href ='products.php'>here  </a>";
+            echo "Check out more products <a href ='products.php'>here  </a>";
             
             
         }

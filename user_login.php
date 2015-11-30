@@ -64,7 +64,7 @@ echo <<<_END
 			<input type='submit' value='Login'>
 		</form>
                 <p style ="color: white; text-align: center;">No account? 
-                 click <a href ="register_user.php">here</a> to sign up</p>
+                 click <a href ="register_user.php" style ="color: yellow;">here</a> to sign up</p>
                 
 	
 

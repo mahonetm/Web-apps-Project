@@ -60,10 +60,11 @@ _END;
             <h1>Meet Bruce</h1>
             <img src ="worker.jpg" id ="worker"/>
             <p id ="description">
-                I will build your stuff. I have built a lot of stuff before. <br>
-                I know how to build stuff really good.<br>
-                I have integrity and honesty. I promise. And I'm really good<br>
-                with people.
+                Through years of experience and a deep passion, <br>
+                I have learned how to create beautiful,<br>
+                hand made products made from a variety<br>
+                of beautiful woods found throughout the world. <br>
+                Quality and integrity are the rules I live by. 
             </p>
         <div/>
         <table>
