@@ -16,7 +16,7 @@ if(isset($_SESSION['username']) &&
 	echo <<<_END
 	<pre>
 	
-	<a href="index.php">Return to Login Screen</a>
+	<a href="user_login.php">Return to Login Screen</a>
 	
 _END;
 
