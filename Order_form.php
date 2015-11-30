@@ -93,10 +93,10 @@ _END;
 	$row=$result->fetch_array(MYSQLI_NUM);
              echo <<<_END
 <div class="formDiv">
-<form action="add_customer.php" method="post" class ="addForm"><pre>
+<form action="Order_form.php" method="post" class ="addForm"><pre>
              <input type="hidden" name="order_id"><br>
-	     <input type="hidden" name="customer_id" value=$username1><br>
-	     <input type="hidden" name="product_id" value="$row[0]"><br>
+	     <input type="text" name="customer_id" value=$username1><br>
+	     <input type="text" name="product_id" value="$row[0]"><br>
              Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>
              <input type="text" name="material_type" placeholder="Please type desired material"><br>
@@ -134,6 +134,11 @@ function get_post($conn, $var) {
 function mysql_entities_fix_string($conn, $string){
 return htmlentities(mysql_fix_string($conn, $string));
 
+}
+
+function mysql_fix_string($conn, $string){
+	if(get_magic_quotes_gpc()) $string = stripslashes($string);
+	return $conn->real_escape_string($string);
 }
 
 ?>    
