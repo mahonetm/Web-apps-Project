@@ -66,8 +66,10 @@ _END;
         }
         $rows=$result->num_rows;
         
-            if (isset($_SESSION['username'])) {
+            if (isset($_SESSION['username'])&&
+                isset($_SESSION['customer_id'])) {
             $username1 = $_SESSION['username'];
+            $cust_id = $_SESSION['customer_id'];
             }
          
     if (isset($_POST['order_id']) &&
@@ -95,7 +97,7 @@ _END;
 <div class="formDiv">
 <form action="Order_form.php" method="post" class ="addForm"><pre>
              <input type="hidden" name="order_id"><br>
-	     <input type="text" name="customer_id" value=$username1><br>
+	     <input type="text" name="customer_id" value="$cust_id"><br>
 	     <input type="text" name="product_id" value="$row[0]"><br>
              Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>

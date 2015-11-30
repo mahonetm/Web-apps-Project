@@ -84,6 +84,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 		$row = $result->fetch_array(MYSQLI_NUM);
 		$correct_pw = $row[5];
 		$name = $row[1];
+                $cust_id = $row[0];
 		$username=$row[6];
 		$result->close();
 		
@@ -97,6 +98,7 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 			session_start();
 			$_SESSION['username']=$username;
 			$_SESSION['password']=$correct_pw;
+                        $_SESSION['customer_id']=$cust_id;
 			header("Location: index.php");
 			
 		}else{
