@@ -79,8 +79,8 @@ _END;
 <div class="formDiv">
 <form action="Order_form.php" method="post" class ="addForm"><pre>
              <input type="hidden" name="order_id"><br>
-	     <input type="text" name="customer_id" value="$cust_id"><br>
-	     <input type="text" name="product_id" value="$row[0]"><br>
+	     <input type="hidden" name="customer_id" value="$cust_id"><br>
+	     <input type="hidden" name="product_id" value="$row[0]"><br>
              Product Name: $row[1]<br>
 	     Available Materials: $row[4] <br>
              <input type="text" name="material" placeholder="Please type desired material"><br>
@@ -123,10 +123,10 @@ _END;
 	$quantity = mysql_entities_fix_string($conn, $_POST['quantity']);
        
 	
-	$query = "INSERT INTO order (order_id, customer_id, product_id, material, quantity) VALUES" . 
-		"('$order_id', '$customer_id', '$product_id', '$material, '$quantity')";
-	$result = $conn->query($query);
-	if (!$result) echo "INSERT failed: $query<br>" . 
+	$query2 = "INSERT INTO order (order_id, customer_id, product_id, material, quantity) VALUES" . 
+		"('$order_id', '$customer_id', '$product_id', '$material', '$quantity')";
+	$result2 = $conn->query($query2);
+	if (!$result2) echo "INSERT failed: $query2<br>" . 
 		$conn->error . "<br><br>";
 	}    
      
